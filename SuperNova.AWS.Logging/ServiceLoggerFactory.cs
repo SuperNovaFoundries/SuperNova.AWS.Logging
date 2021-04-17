@@ -10,7 +10,7 @@ namespace SuperNova.AWS.Logging
 {
     [Export(typeof(IServiceLoggerFactory))]
     [Shared]
-    public sealed class ServiceLoggerFactory : IServiceLoggerFactory
+    sealed class ServiceLoggerFactory : IServiceLoggerFactory
     {
         private ILoggerFactory _factory;
         public ServiceLoggerFactory()
@@ -81,5 +81,4 @@ namespace SuperNova.AWS.Logging
             return _factory.CreateLogger(category + " - " + Assembly.GetExecutingAssembly().GetName().Version.ToString());
         }
     }
-
 }
