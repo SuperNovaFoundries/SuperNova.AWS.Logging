@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -21,7 +21,7 @@
     <PackageReference Include="AWS.Logger.AspNetCore" Version="3.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
-    <PackageReference Include="SuperNova.MEF.NetCore" Version="1.0.21101.1959" />
+    <PackageReference Include="SuperNova.MEF.NetCore" Version="1.0.21107.528" />
   </ItemGroup>
 
 </Project>

@@ -4,6 +4,7 @@ using AWS.Logger;
 using System.Reflection;
 using System.Composition;
 using SuperNova.AWS.Logging.Contract;
+using System.IO;
 
 namespace SuperNova.AWS.Logging
 {
@@ -40,7 +41,10 @@ namespace SuperNova.AWS.Logging
 #endif
             if (logDirect)
             {
-                var config = new AWSLoggerConfig();
+                var config = new AWSLoggerConfig()
+                {
+                    LibraryLogFileName = Path.Combine(Path.GetTempPath(), "aws-logger-errors.txt")
+                };
 
                 var group = Environment.GetEnvironmentVariable("LOGGING_CLOUDWATCH_GROUP");
 #if DEBUG

@@ -11,6 +11,7 @@ phases:
       - echo "<CODEBUILD_INITIATOR>"$CODEBUILD_INITIATOR"</CODEBUILD_INITIATOR>" >> buildinfo.xml
       - echo "<CODEUBUILD_KMS_KEY_ID>"$CODEUBUILD_KMS_KEY_ID"</CODEUBUILD_KMS_KEY_ID>" >> buildinfo.xml
       - echo "</BuildInfo>" >> buildinfo.xml
+      - a=$(aws secretsmanager get-secret-value --secret-id supernova/setup/nuget --query 'SecretString' --output text)
       - dotnet restore SuperNova.AWS.Logging.sln
   build:
     commands:
@@ -18,7 +19,7 @@ phases:
   post_build:
     commands:
      - dotnet publish SuperNova.AWS.Logging.sln -c Release /p:Version=$DLLVERSION /p:DebugSymbols=false /p:DebugType=None  
-     - dotnet nuget push bin/*.nupkg --api-key oy2gujzkslmss22d7xpar7yfthnjh3vexn63eojaxl2dr4 --source https://api.nuget.org/v3/index.json
+     - dotnet nuget push bin/*.nupkg --api-key $a --source https://api.nuget.org/v3/index.json
 artifacts:
   files:
   discard-paths: no
